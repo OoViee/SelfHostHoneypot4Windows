@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin Panel</h2>
+<p>System Logs:</p>
+<ul>
+  <li>Last failed login from 192.168.1.101</li>
+  <li>Suspicious upload attempt blocked</li>
+</ul>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+{% endblock %}

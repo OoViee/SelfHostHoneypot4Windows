@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome, {{ session.get('user') }}</h2>
+<p>This is your IntraMail Dashboard.</p>
+<ul>
+  <li>3 unread emails</li>
+  <li>Last login: {{ last_login }}</li>
+</ul>
+{% endblock %}

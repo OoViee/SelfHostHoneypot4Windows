@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}Tickets - HelpDeskX{% endblock %}
+
+{% block content %}
+<h2>Support Tickets</h2>
+
+<!-- Search + Filter Form -->
+<form class="row gy-2 gx-3 align-items-center mt-3 mb-4" method="GET" action="{{ url_for('tickets') }}">
+    <div class="col-md-4">
+        <input type="text" class="form-control" name="q"
+               placeholder="Search by keyword, subject, ID..."
+               value="{{ request.args.get('q', '') }}">
+    </div>
+    <div class="col-md-3">
+        <select class="form-select" name="status">
+            <option value="">Status Filter</option>
+            <option value="open" {% if request.args.get('status') == 'open' %}selected{% endif %}>Open</option>
+            <option value="resolved" {% if request.args.get('status') == 'resolved' %}selected{% endif %}>Resolved</option>
+            <option value="escalated" {% if request.args.get('status') == 'escalated' %}selected{% endif %}>Escalated</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Apply</button>
+    </div>
+</form>
+
+{% if query %}
+<div class="alert alert-warning">Search Results for: <strong>{{ query }}</strong></div>
+{% endif %}
+
+{% if sqli %}
+<div class="alert alert-danger">⚠️ SQL Error: syntax error at or near '{{ query }}'</div>
+<h5>Query returned {{ results|length }} rows</h5>
+<table class="table table-striped">
+  <thead>
+    <tr><th>ID</th><th>Subject</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    {% for r in results %}
+    <tr>
+      <td><a href="{{ url_for('ticket_detail', ticket_id=r.ticket_id) }}">{{ r.ticket_id }}</a></td>
+      <td>{{ r.subject }}</td>
+      <td>{{ r.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<!-- Simulate reflection (XSS bait) -->
+{% if request.args.get('q') %}
+<div class="alert alert-warning">
+    Search results for: <strong>{{ request.args.get('q') | safe }}</strong>
+</div>
+{% endif %}
+
+<!-- Ticket Table -->
+<table class="table table-hover bg-white align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Subject</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Requested By</th>
+            <th>Assigned To</th>
+            <th>Updated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="{{ url_for('ticket_detail', ticket_id='24910') }}">#TK-24910</a></td>
+            <td>Unable to connect to shared printer</td>
+            <td><span class="badge bg-warning text-dark">Open</span></td>
+            <td>Low</td>
+            <td>nina.wang@corp.local</td>
+            <td>Alice</td>
+            <td>Today 10:12</td>
+        </tr>
+        <tr>
+            <td><a href="{{ url_for('ticket_detail', ticket_id='24901') }}">#TK-24901</a></td>
+            <td>Endpoint antivirus update failed</td>
+            <td><span class="badge bg-primary">In Progress</span></td>
+            <td>Medium</td>
+            <td>bob.jenkins@corp.local</td>
+            <td>Bob</td>
+            <td>Today 09:58</td>
+        </tr>
+        <tr>
+            <td><a href="{{ url_for('ticket_detail', ticket_id='24895') }}">#TK-24895</a></td>
+            <td>Network share not accessible</td>
+            <td><span class="badge bg-danger">Escalated</span></td>
+            <td>High</td>
+            <td>alice.hall@corp.local</td>
+            <td>Admin</td>
+            <td>Today 08:32</td>
+        </tr>
+        <tr>
+            <td><a href="{{ url_for('ticket_detail', ticket_id='24887') }}">#TK-24887</a></td>
+            <td>Firewall config mismatch</td>
+            <td><span class="badge bg-success">Resolved</span></td>
+            <td>High</td>
+            <td>carlos.miller@corp.local</td>
+            <td>Alice</td>
+            <td>Yesterday 15:20</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

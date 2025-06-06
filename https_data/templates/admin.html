@@ -1,0 +1,51 @@
+<!-- https_data/templates/admin.html -->
+{% extends "base.html" %}
+{% block title %}Admin Panel - HelpDeskX{% endblock %}
+
+{% block content %}
+<h2>Admin Control Panel</h2>
+
+<div class="alert alert-warning mt-3">
+    <strong>Warning:</strong> You are accessing a restricted administrative interface. All actions are logged.
+</div>
+
+<div class="row mt-4 g-4">
+    <div class="col-md-6">
+        <div class="card border-danger">
+            <div class="card-body">
+                <h5 class="card-title text-danger">User Access Management</h5>
+                <ul>
+                    <li><code>admin</code> (Full access)</li>
+                    <li><code>alice</code> (Support Technician)</li>
+                    <li><code>bob</code> (Read-only)</li>
+                </ul>
+                <button class="btn btn-danger btn-sm disabled">Reset Passwords</button>
+                <button class="btn btn-outline-secondary btn-sm disabled">Revoke Access</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card border-dark">
+            <div class="card-body">
+                <h5 class="card-title">Audit Logs</h5>
+                <ul class="list-group small">
+                    <li class="list-group-item">[admin] Logged in at 09:21</li>
+                    <li class="list-group-item">[bob] Attempted access to /admin (403)</li>
+                    <li class="list-group-item">[alice] Downloaded vpn_config.conf</li>
+                </ul>
+                <button class="btn btn-secondary btn-sm disabled mt-2">Export Logs</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5">
+    <h4>Critical System Flags</h4>
+    <p>
+        <span class="badge bg-success">✔ Firewall OK</span>
+        <span class="badge bg-warning text-dark">⚠ Certificate Expiring</span>
+        <span class="badge bg-danger">❌ SSO Sync Failed</span>
+    </p>
+</div>
+{% endblock %}

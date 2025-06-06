@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timesheets - CorpHRMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">CorpHRMS</a>
+        <div class="d-flex">
+            <a class="btn btn-outline-light" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2>Employee Timesheets</h2>
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Name</th>
+                <th>Week</th>
+                <th>Total Hours</th>
+                <th>Project</th>
+                <th>Manager</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in timesheets %}
+            <tr>
+                <td>{{ row.name }}</td>
+                <td>{{ row.week }}</td>
+                <td>{{ row.hours }}</td>
+                <td>{{ row.project }}</td>
+                <td>{{ row.manager }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

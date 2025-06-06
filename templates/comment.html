@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head><title>Leave Feedback</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+<div class="container">
+<h2>Leave Feedback</h2>
+{% if msg %}<p style="color:green">{{ msg }}</p>{% endif %}
+<form method="POST">
+  <textarea name="comment" rows="5" placeholder="Try posting <script>alert(1)</script> here..."></textarea>
+  <input type="submit" value="Submit" />
+</form>
+</div>
+</body>
+</html>

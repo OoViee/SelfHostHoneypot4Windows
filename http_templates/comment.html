@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Leave a Note</h2>
+<form method="post">
+  <textarea name="comment" rows="5" cols="40" placeholder="Enter comment..."></textarea><br>
+  <input type="submit" value="Submit">
+</form>
+{% if msg %}<p>{{ msg }}</p>{% endif %}
+{% endblock %}

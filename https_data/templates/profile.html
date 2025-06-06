@@ -1,0 +1,59 @@
+<!-- https_data/templates/profile.html -->
+{% extends "base.html" %}
+{% block title %}Profile - HelpDeskX{% endblock %}
+
+{% block content %}
+<h2>Your Profile</h2>
+
+<div class="card mt-4">
+    <div class="card-body d-flex align-items-center">
+        <img src="{{ url_for('static', filename='img/staff_avatar.png') }}" class="rounded-circle me-4" width="100" height="100" alt="User Avatar">
+        <div>
+            <h4 class="card-title mb-1">{{ user | capitalize }} (Support Technician)</h4>
+            <p class="mb-0 text-muted">IT Operations Department</p>
+            <p class="mt-2 mb-0"><strong>Email:</strong> {{ user }}@corp.local</p>
+            <p class="mb-0"><strong>Ext:</strong> 2389 &nbsp; | &nbsp; <strong>Status:</strong> Online</p>
+        </div>
+    </div>
+</div>
+
+<!-- Assigned tickets -->
+<div class="mt-4">
+    <h4>Assigned Tickets</h4>
+    <ul class="list-group">
+        <li class="list-group-item">#TK-24901 - Endpoint antivirus failure</li>
+        <li class="list-group-item">#TK-24895 - Network share offline (HR)</li>
+        <li class="list-group-item">#TK-24888 - Printer queue stuck on floor 3</li>
+    </ul>
+</div>
+
+<!-- Shift schedule -->
+<div class="mt-4">
+    <h4>Weekly Shift Schedule</h4>
+    <table class="table table-sm table-bordered bg-white">
+        <thead class="table-light">
+            <tr>
+                <th>Day</th>
+                <th>Shift</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Monday</td><td>08:00 – 16:00</td></tr>
+            <tr><td>Tuesday</td><td>08:00 – 16:00</td></tr>
+            <tr><td>Wednesday</td><td>10:00 – 18:00</td></tr>
+            <tr><td>Thursday</td><td>08:00 – 16:00</td></tr>
+            <tr><td>Friday</td><td>08:00 – 16:00</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Permissions -->
+<div class="mt-4">
+    <h4>System Permissions</h4>
+    <ul>
+        <li>Read/write: Ticket system, config files</li>
+        <li>Limited: VPN admin console</li>
+        <li>No access: AD User Manager, Admin Panel</li>
+    </ul>
+</div>
+{% endblock %}

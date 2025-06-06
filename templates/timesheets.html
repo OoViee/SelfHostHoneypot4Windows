@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Timesheets</h2>
+<table class="table table-hover">
+  <thead class="table-light">
+    <tr>
+      <th>Name</th><th>Project</th><th>Hours</th><th>Rate</th><th>Token</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for t in timesheets %}
+    <tr>
+      <td>{{ t.name }}</td><td>{{ t.project }}</td><td>{{ t.hours }}</td><td>{{ t.rate }}</td>
+      <td>{{ t.token if t.token else '—' }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

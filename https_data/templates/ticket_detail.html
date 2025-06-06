@@ -1,0 +1,47 @@
+<!-- https_data/templates/ticket_detail.html -->
+{% extends "base.html" %}
+{% block title %}Ticket {{ ticket.id }} - HelpDeskX{% endblock %}
+
+{% block content %}
+<h2>Ticket #TK-{{ ticket.id }}</h2>
+
+<div class="mb-4">
+    <p><strong>Subject:</strong> {{ ticket.subject }}</p>
+    <p><strong>Status:</strong> {{ ticket.status }}</p>
+    <p><strong>Priority:</strong> {{ ticket.priority }}</p>
+    <p><strong>Requested By:</strong> {{ ticket.requested_by }}</p>
+    <p><strong>Assigned To:</strong> {{ ticket.assigned_to }}</p>
+    <p><strong>Last Updated:</strong> {{ ticket.last_updated }}</p>
+</div>
+
+<div class="mb-4">
+    <h5>Description</h5>
+    <p>{{ ticket.description }}</p>
+</div>
+
+<div class="mb-4">
+    <h5>Attachments</h5>
+    <ul>
+        {% for file, size in ticket.attachments %}
+        <li><a href="{{ url_for('static', filename='docs/' + file) }}" download>{{ file }}</a> <small class="text-muted">({{ size }})</small></li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="mb-4">
+    <h5>Ticket History</h5>
+    <ul class="list-group">
+        {% for entry in ticket.updates %}
+        <li class="list-group-item">{{ entry }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="mt-4">
+    <h5>Post Internal Comment</h5>
+    <form method="POST" action="#">
+        <textarea class="form-control mb-2" rows="3" placeholder='e.g. Tried "net use \\\\share\\HR", getting access denied.'></textarea>
+        <button class="btn btn-primary" disabled>Submit (disabled)</button>
+    </form>
+</div>
+{% endblock %}

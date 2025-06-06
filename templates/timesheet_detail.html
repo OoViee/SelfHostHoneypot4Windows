@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timesheet Detail</title>
+</head>
+<body>
+    <h2>Timesheet Entry</h2>
+    <ul>
+        <li>Name: {{ t.name }}</li>
+        <li>Project: {{ t.project }}</li>
+        <li>Hours: {{ t.hours }}</li>
+        <li>Rate: {{ t.rate }}</li>
+        {% if t.token %}
+        <li><strong>Access Token:</strong> {{ t.token }}</li>
+        {% endif %}
+    </ul>
+    <a href="{{ url_for('timesheet') }}">Back to Timesheets</a>
+</body>
+</html>

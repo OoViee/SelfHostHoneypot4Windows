@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Ping Tool</h2>
+<form method="post">
+  <input type="text" name="target" placeholder="IP or domain">
+  <input type="submit" value="Ping">
+</form>
+{% if output %}<pre>{{ output }}</pre>{% endif %}
+{% endblock %}

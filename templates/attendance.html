@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Attendance Log</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr><th>Date</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    {% for row in attendance %}
+    <tr>
+      <td>{{ row.date }}</td>
+      <td>{{ row.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

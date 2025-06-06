@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Search Emails</h2>
+<form method="get">
+  <input type="text" name="q" placeholder="Search subject or sender">
+  <input type="submit" value="Search">
+</form>
+{% if query %}
+<p>Results for "{{ query }}":</p>
+<pre>
+{% if "1=1" in query or "--" in query %}
+[FAKE_DB] SELECT * FROM emails WHERE subject LIKE '%{{ query }}%'...
+Found 189 records.
+- admin@example.com: Q4 Financial Report
+- ceo@intra.com: Meeting Agenda
+- ... more ...
+{% else %}
+No results found.
+{% endif %}
+</pre>
+{% endif %}
+{% endblock %}

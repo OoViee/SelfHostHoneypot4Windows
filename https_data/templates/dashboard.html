@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - HelpDeskX{% endblock %}
+
+{% block content %}
+<ul class="nav nav-tabs mb-3">
+  <li class="nav-item"><a class="nav-link active" href="{{ url_for('dashboard') }}">Home</a></li>
+  <li class="nav-item"><a class="nav-link" href="{{ url_for('tickets') }}">Tickets</a></li>
+  <li class="nav-item"><a class="nav-link" href="{{ url_for('admin') }}">Admin</a></li>
+  <li class="nav-item"><a class="nav-link" href="{{ url_for('documents') }}">Documents</a></li>
+</ul>
+
+<h2 class="mb-4">HelpDeskX Support Dashboard</h2>
+
+<div class="row g-4">
+    <!-- Open Tickets -->
+    <div class="col-md-3">
+        <a href="{{ url_for('tickets') }}?status=open" class="text-decoration-none">
+            <div class="card border-primary text-center h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">Open Tickets</h6>
+                    <h3 class="text-primary">27</h3>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!-- Resolved -->
+    <div class="col-md-3">
+        <a href="{{ url_for('tickets') }}?status=resolved" class="text-decoration-none">
+            <div class="card border-success text-center h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">Resolved (24h)</h6>
+                    <h3 class="text-success">11</h3>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!-- Escalated -->
+    <div class="col-md-3">
+        <a href="{{ url_for('tickets') }}?status=escalated" class="text-decoration-none">
+            <div class="card border-warning text-center h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">Pending Escalation</h6>
+                    <h3 class="text-warning">5</h3>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!-- SLA Breaches -->
+    <div class="col-md-3">
+        <a href="{{ url_for('tickets') }}?status=sla_breached" class="text-decoration-none">
+            <div class="card border-danger text-center h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">SLA Breaches</h6>
+                    <h3 class="text-danger">2</h3>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- Workload chart -->
+<div class="card mt-5">
+    <div class="card-header">
+        Technician Ticket Load (This Week)
+    </div>
+    <div class="card-body">
+        <canvas id="ticketChart" width="400" height="150"></canvas>
+    </div>
+</div>
+
+<!-- Recent Activity Log -->
+<div class="card mt-4">
+    <div class="card-header">
+        Recent Activity
+    </div>
+    <ul class="list-group list-group-flush small">
+        <li class="list-group-item">[10:24 AM] alice resolved ticket #TK-24891 - "Email sync issue"</li>
+        <li class="list-group-item">[09:58 AM] admin escalated ticket #TK-24887 - "Firewall config mismatch"</li>
+        <li class="list-group-item">[09:12 AM] bob created ticket #TK-24895 - "Network share offline"</li>
+        <li class="list-group-item">[08:44 AM] alice commented on #TK-24870 - "Password reset delay"</li>
+        <li class="list-group-item">[Yesterday 17:20] admin closed #TK-24881 - "Laptop provisioning for QA"</li>
+    </ul>
+</div>
+
+<!-- Chart.js script (local) -->
+<script src="{{ url_for('static', filename='bootstrap/js/chart.3.9.1.min.js') }}"></script>
+<script>
+    const ctx = document.getElementById('ticketChart').getContext('2d');
+    const ticketChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Alice', 'Bob', 'Carlos', 'Nina', 'Admin'],
+            datasets: [{
+                label: 'Tickets Handled',
+                data: [9, 4, 7, 5, 11],
+                backgroundColor: 'rgba(13, 110, 253, 0.6)',
+                borderRadius: 6
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 2 }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

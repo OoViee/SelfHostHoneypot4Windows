@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head><title>Product Search</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+<div class="container">
+<h2>Search Products</h2>
+<form method="GET">
+  <input type="text" name="q" placeholder="e.g. SELECT * FROM users" value="{{ query or '' }}" />
+  <input type="submit" value="Search" />
+</form>
+{% if query %}<p>Results for "{{ query }}": No matches found.</p>{% endif %}
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head><title>Ping Tool</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+<div class="container">
+<h2>Ping Tool</h2>
+<form method="POST">
+  <input type="text" name="target" placeholder="8.8.8.8 or example.com" />
+  <input type="submit" value="Ping" />
+</form>
+{% if output %}<pre>{{ output }}</pre>{% endif %}
+</div>
+</body>
+</html>

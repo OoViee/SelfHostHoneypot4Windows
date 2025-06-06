@@ -1,0 +1,83 @@
+<!-- https_data/templates/documents.html -->
+{% extends "base.html" %}
+{% block title %}Documents - HelpDeskX{% endblock %}
+
+{% block content %}
+<h2>Internal Support Documents</h2>
+
+<!-- Fake inline filter bar that acts as a traversal trap -->
+<form method="GET" class="row g-2 align-items-center mb-3">
+    <div class="col-auto">
+        <input name="file" class="form-control form-control-sm"
+               placeholder="Filter by filename..." 
+               value="{{ request.args.get('file', '') }}">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-sm btn-outline-secondary">Apply</button>
+    </div>
+</form>
+
+<table class="table table-hover mt-4 bg-white align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>File</th>
+            <th>Size</th>
+            <th>Last Modified</th>
+            <th>Downloads</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <img src="{{ url_for('static', filename='img/txt_icon.png') }}" alt="txt" width="20" class="me-2">
+                credentials.txt
+            </td>
+            <td>2.1 KB</td>
+            <td>2025-04-15</td>
+            <td>17</td>
+            <td><a href="{{ url_for('static', filename='docs/credentials.txt') }}" download class="btn btn-sm btn-outline-primary">Download</a></td>
+        </tr>
+        <tr>
+            <td>
+                <img src="{{ url_for('static', filename='img/conf_icon.png') }}" alt="conf" width="20" class="me-2">
+                vpn_config.conf
+            </td>
+            <td>1.6 KB</td>
+            <td>2025-04-12</td>
+            <td>23</td>
+            <td><a href="{{ url_for('static', filename='docs/vpn_config.conf') }}" download class="btn btn-sm btn-outline-primary">Download</a></td>
+        </tr>
+        <tr>
+            <td>
+                <img src="{{ url_for('static', filename='img/pdf_icon.png') }}" alt="pdf" width="20" class="me-2">
+                internal_policy.pdf
+            </td>
+            <td>54 KB</td>
+            <td>2025-04-10</td>
+            <td>8</td>
+            <td><a href="{{ url_for('static', filename='docs/internal_policy.pdf') }}" download class="btn btn-sm btn-outline-primary">Download</a></td>
+        </tr>
+        <tr>
+            <td>
+                <img src="{{ url_for('static', filename='img/txt_icon.png') }}" alt="txt" width="20" class="me-2">
+                sql_backup_notes.txt
+            </td>
+            <td>3.4 KB</td>
+            <td>2025-04-18</td>
+            <td>12</td>
+            <td><a href="{{ url_for('static', filename='docs/sql_backup_notes.txt') }}" download class="btn btn-sm btn-outline-primary">Download</a></td>
+        </tr>
+        <tr>
+            <td>
+                <img src="{{ url_for('static', filename='img/key_icon.png') }}" alt="pem" width="20" class="me-2">
+                ssh_key_legacy.pem
+            </td>
+            <td>1.9 KB</td>
+            <td>2025-04-08</td>
+            <td>31</td>
+            <td><a href="{{ url_for('static', filename='docs/ssh_key_legacy.pem') }}" download class="btn btn-sm btn-outline-primary">Download</a></td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

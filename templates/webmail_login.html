@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Webmail Login</title>
+  <link rel="stylesheet" href="/static/webmail.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Webmail Access</h2>
+    {% if error %}
+      <p class="error">Invalid login. Please try again.</p>
+    {% endif %}
+    <form method="POST">
+      <label>Email Address</label>
+      <input type="email" name="username" required placeholder="user@example.com">
+      
+      <label>Password</label>
+      <input type="password" name="password" required placeholder="********">
+      
+      <button type="submit">Sign In</button>
+    </form>
+    <p class="footer-text">© 2025 Webmail Portal | IT Services</p>
+  </div>
+</body>
+</html>

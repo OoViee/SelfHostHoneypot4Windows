@@ -1,0 +1,5 @@
+﻿Access Control Policy
+---------------------
+1. MFA is mandatory for all VPN connections.
+2. Admin logins are restricted to on-site only.
+3. Shared credentials are forbidden.

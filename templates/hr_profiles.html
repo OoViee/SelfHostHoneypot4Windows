@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Employee Profiles</h2>
+<a href="{{ url_for('download_hr_data') }}" class="btn btn-outline-secondary mb-3">Download CSV</a>
+<table class="table table-bordered table-striped">
+  <thead class="table-primary">
+    <tr>
+      <th>Name</th><th>DOB</th><th>Dept</th><th>Salary</th><th>SSN</th><th>Phone</th><th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for emp in employees %}
+    <tr>
+      <td>{{ emp.name }}</td><td>{{ emp.dob }}</td><td>{{ emp.dept }}</td><td>{{ emp.salary }}</td>
+      <td>{{ emp.ssn }}</td><td>{{ emp.phone }}</td><td>{{ emp.email }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

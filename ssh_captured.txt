@@ -1,0 +1,2 @@
+[SSH] Login attempt - Username: DNIF, Password: sdgdf
+[SSH] Auth attempt from 172.16.85.143 - Username: DNIF, Password: gd

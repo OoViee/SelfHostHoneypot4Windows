@@ -1,0 +1,4 @@
+﻿# SQL Backup Notes
+- Full backup: 2025-04-10 02:00 AM
+- Incremental: 2025-04-20 03:00 AM
+- Next scheduled: 2025-04-25 02:00 AM

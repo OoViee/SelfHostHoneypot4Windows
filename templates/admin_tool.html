@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Command Tool</title>
+</head>
+<body>
+    <h2>System Command Executor</h2>
+    <form method="POST">
+        <label>Command:</label>
+        <input type="text" name="cmd" required style="width: 400px;">
+        <button type="submit">Execute</button>
+    </form>
+    <p><strong>Warning:</strong> Use this tool responsibly.</p>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- https_data/templates/login.html -->
+{% extends "base.html" %}
+{% block title %}Login - CorpIntranet{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h3 class="text-center">Corporate Intranet Login</h3>
+        <form method="POST" class="border p-4 bg-white shadow-sm rounded">
+            {% if error %}
+                <div class="alert alert-danger">Invalid username or password.</div>
+            {% endif %}
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

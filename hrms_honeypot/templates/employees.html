@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html><head><title>Employees</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><div class="container">
+<h2>Employees</h2>
+<form method="post"><input name="search" placeholder="Search by ID or name"><button type="submit">Search</button></form>
+<table><tr><th>ID</th><th>Name</th><th>Department</th></tr>
+{% for e in employees %}<tr><td><a href="/employee/{{e.id}}">{{e.id}}</a></td><td>{{e.name}}</td><td>{{e.department}}</td></tr>{% endfor %}</table>
+</div></body></html>

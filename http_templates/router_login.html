@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Router Login</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="login-box">
+    <h2>Router Admin Panel</h2>
+    {% if error %}
+      <p class="error">Login failed. Please try again.</p>
+    {% endif %}
+    <form method="post">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required>
+      
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required>
+      
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</body>
+</html>
