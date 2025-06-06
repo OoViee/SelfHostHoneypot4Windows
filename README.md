@@ -54,7 +54,6 @@ CopyEdit
 SelfHostHoneyPot/
 
 ├── controller.py              # Main controller to launch all services
-
 ├── ftp_service.py             # FTP honeypot using pyftpdlib
 ├── http_service.py            # HTTP honeypot using Flask
 ├── https_service.py           # HTTPS service with SSL wrapper
