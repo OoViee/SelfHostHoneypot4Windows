@@ -54,14 +54,23 @@ CopyEdit
 SelfHostHoneyPot/
 
 ├── controller.py              # Main controller to launch all services
+
 ├── ftp_service.py             # FTP honeypot using pyftpdlib
+
 ├── http_service.py            # HTTP honeypot using Flask
+
 ├── https_service.py           # HTTPS service with SSL wrapper
+
 ├── hrms_service.py            # Realistic HRMS web interface
+
 ├── command_handler.py         # Handles simulated shell/terminal commands
+
 ├── generate_cert.py           # Self-signed SSL certificate generator
+
 ├── cert.pem / key.pem         # SSL certificate and key
+
 ├── ftp_honeypot.log           # FTP log file
+
 ├── honeypot_commands.log      # Logs commands from SSH/FTP
 
 
